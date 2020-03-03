@@ -595,7 +595,7 @@ ULDUM | ULD_152 | Pressure Plate | O
 ULDUM | ULD_154 | Hyena Alpha | O
 ULDUM | ULD_155 | Unseal the Vault | O
 ULDUM | ULD_156 | Dinotamer Brann |  
-ULDUM | ULD_157 | Questing Explorer |  
+ULDUM | ULD_157 | Questing Explorer | O
 ULDUM | ULD_158 | Sandstorm Elemental |  
 ULDUM | ULD_160 | Sinister Deal |  
 ULDUM | ULD_161 | Neferset Thrasher |  
@@ -714,7 +714,7 @@ ULDUM | ULD_726 | Ancient Mysteries |
 ULDUM | ULD_727 | Body Wrapper |  
 ULDUM | ULD_728 | Subdue |  
 
-- Progress: 18% (25 of 135 Cards)
+- Progress: 18% (26 of 135 Cards)
 
 ## Descent of Dragons
 
