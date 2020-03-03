@@ -867,6 +867,46 @@ TEST_CASE("[Neutral : Minion] - ULD_184 : Kobold Sandtrooper")
 }
 
 // --------------------------------------- MINION - NEUTRAL
+// [ULD_190] Pit Crocolisk - COST:8 [ATK:5/HP:6]
+// - Race: Beast, Set: Uldum, Rarity: Common
+// --------------------------------------------------------
+// Text: <b>Battlecry:</b> Deal 5 damage.
+// --------------------------------------------------------
+// GameTag:
+// - BATTLECRY = 1
+// --------------------------------------------------------
+// PlayReq:
+// - REQ_TARGET_TO_PLAY = 0
+// --------------------------------------------------------
+TEST_CASE("[Neutral : Minion] - ULD_190 : Pit Crocolisk")
+{
+    GameConfig config;
+    config.player1Class = CardClass::MAGE;
+    config.player2Class = CardClass::MAGE;
+    config.startPlayer = PlayerType::PLAYER1;
+    config.doFillDecks = true;
+    config.autoRun = false;
+
+    Game game(config);
+    game.Start();
+    game.ProcessUntil(Step::MAIN_START);
+
+    Player* curPlayer = game.GetCurrentPlayer();
+    Player* opPlayer = game.GetOpponentPlayer();
+    curPlayer->SetTotalMana(10);
+    curPlayer->SetUsedMana(0);
+    opPlayer->SetTotalMana(10);
+    opPlayer->SetUsedMana(0);
+
+    const auto card1 =
+        Generic::DrawCard(curPlayer, Cards::FindCardByName("Pit Crocolisk"));
+
+    game.Process(curPlayer,
+                 PlayCardTask::MinionTarget(card1, opPlayer->GetHero()));
+    CHECK_EQ(opPlayer->GetHero()->GetHealth(), 25);
+}
+
+// --------------------------------------- MINION - NEUTRAL
 // [ULD_191] Beaming Sidekick - COST:1 [ATK:1/HP:2]
 // - Set: Uldum, Rarity: Common
 // --------------------------------------------------------
