@@ -632,6 +632,78 @@ TEST_CASE("[Warrior : Minion] - ULD_206 : Restless Mummy")
 }
 
 // --------------------------------------- MINION - NEUTRAL
+// [ULD_157] Questing Explorer - COST:2 [ATK:2/HP:3]
+// - Set: Uldum, Rarity: Rare
+// --------------------------------------------------------
+// Text: <b>Battlecry:</b> If you control a <b>Quest</b>,
+//       draw a card.
+// --------------------------------------------------------
+// GameTag:
+// - BATTLECRY = 1
+// --------------------------------------------------------
+// RefTag:
+// - QUEST = 1
+// --------------------------------------------------------
+TEST_CASE("[Neutral : Minion] - ULD_157 : Questing Explorer")
+{
+    GameConfig config;
+    config.player1Class = CardClass::HUNTER;
+    config.player2Class = CardClass::HUNTER;
+    config.startPlayer = PlayerType::PLAYER1;
+    config.doFillDecks = true;
+    config.autoRun = false;
+
+    Game game(config);
+    game.Start();
+    game.ProcessUntil(Step::MAIN_START);
+
+    Player* curPlayer = game.GetCurrentPlayer();
+    Player* opPlayer = game.GetOpponentPlayer();
+    curPlayer->SetTotalMana(10);
+    curPlayer->SetUsedMana(0);
+    opPlayer->SetTotalMana(10);
+    opPlayer->SetUsedMana(0);
+
+    auto& curHand = *(curPlayer->GetHandZone());
+    auto& opHand = *(opPlayer->GetHandZone());
+
+    auto& curSecret = *(curPlayer->GetSecretZone());
+    auto& opSecret = *(opPlayer->GetSecretZone());
+
+    const auto card1 = Generic::DrawCard(
+        curPlayer, Cards::FindCardByName("Questing Explorer"));
+    const auto card2 = Generic::DrawCard(
+        curPlayer, Cards::FindCardByName("Questing Explorer"));
+    const auto card3 =
+        Generic::DrawCard(curPlayer, Cards::FindCardByName("Unseal the Vault"));
+    const auto card4 =
+        Generic::DrawCard(opPlayer, Cards::FindCardByName("Questing Explorer"));
+    const auto card5 = Generic::DrawCard(
+        opPlayer, Cards::FindCardByName("Toxic Reinforcements"));
+
+    CHECK_EQ(curHand.GetCount(), 7);
+    CHECK_EQ(opHand.GetCount(), 7);
+
+    game.Process(curPlayer, PlayCardTask::Minion(card1));
+    CHECK_EQ(curHand.GetCount(), 6);
+
+    game.Process(curPlayer, PlayCardTask::Spell(card3));
+    CHECK_EQ(curSecret.quest->card->name, "Unseal the Vault");
+
+    game.Process(curPlayer, PlayCardTask::Minion(card2));
+    CHECK_EQ(curHand.GetCount(), 5);
+
+    game.Process(curPlayer, EndTurnTask());
+    game.ProcessUntil(Step::MAIN_START);
+
+    game.Process(opPlayer, PlayCardTask::Spell(card5));
+    CHECK_EQ(opSecret[0]->IsSidequest(), true);
+
+    game.Process(opPlayer, PlayCardTask::Minion(card4));
+    CHECK_EQ(opHand.GetCount(), 7);
+}
+
+// --------------------------------------- MINION - NEUTRAL
 // [ULD_174] Serpent Egg - COST:2 [ATK:0/HP:3]
 // - Set: Uldum, Rarity: Common
 // --------------------------------------------------------
