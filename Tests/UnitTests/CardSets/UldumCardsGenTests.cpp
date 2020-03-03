@@ -751,6 +751,21 @@ TEST_CASE("[Neutral : Minion] - ULD_174 : Serpent Egg")
 }
 
 // --------------------------------------- MINION - NEUTRAL
+// [ULD_177] Octosari - COST:8 [ATK:8/HP:8]
+// - Race: Beast, Set: Uldum, Rarity: Legendary
+// --------------------------------------------------------
+// Text: <b>Deathrattle:</b> Draw 8 cards.
+// --------------------------------------------------------
+// GameTag:
+// - ELITE = 1
+// - DEATHRATTLE = 1
+// --------------------------------------------------------
+TEST_CASE("[Neutral : Minion] - ULD_177 : Octosari")
+{
+    // Do nothing
+}
+
+// --------------------------------------- MINION - NEUTRAL
 // [ULD_182] Spitting Camel - COST:2 [ATK:2/HP:4]
 // - Race: Beast, Set: Uldum, Rarity: Common
 // --------------------------------------------------------
