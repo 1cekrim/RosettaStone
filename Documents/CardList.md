@@ -610,7 +610,7 @@ ULDUM | ULD_171 | Totemic Surge |
 ULDUM | ULD_172 | Plague of Murlocs |  
 ULDUM | ULD_173 | Vessina |  
 ULDUM | ULD_174 | Serpent Egg | O
-ULDUM | ULD_177 | Octosari |  
+ULDUM | ULD_177 | Octosari | O
 ULDUM | ULD_178 | Siamat |  
 ULDUM | ULD_179 | Phalanx Commander |  
 ULDUM | ULD_180 | Sunstruck Henchman |  
@@ -714,7 +714,7 @@ ULDUM | ULD_726 | Ancient Mysteries |
 ULDUM | ULD_727 | Body Wrapper |  
 ULDUM | ULD_728 | Subdue |  
 
-- Progress: 18% (26 of 135 Cards)
+- Progress: 18% (27 of 135 Cards)
 
 ## Descent of Dragons
 
