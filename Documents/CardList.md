@@ -622,7 +622,7 @@ ULDUM | ULD_185 | Temple Berserker |
 ULDUM | ULD_186 | Pharaoh Cat |  
 ULDUM | ULD_188 | Golden Scarab |  
 ULDUM | ULD_189 | Faceless Lurker |  
-ULDUM | ULD_190 | Pit Crocolisk |  
+ULDUM | ULD_190 | Pit Crocolisk | O
 ULDUM | ULD_191 | Beaming Sidekick | O
 ULDUM | ULD_193 | Living Monument | O
 ULDUM | ULD_194 | Wasteland Scorpid | O
@@ -714,7 +714,7 @@ ULDUM | ULD_726 | Ancient Mysteries |
 ULDUM | ULD_727 | Body Wrapper |  
 ULDUM | ULD_728 | Subdue |  
 
-- Progress: 18% (27 of 135 Cards)
+- Progress: 18% (28 of 135 Cards)
 
 ## Descent of Dragons
 
