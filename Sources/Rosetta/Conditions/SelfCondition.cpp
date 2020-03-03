@@ -149,6 +149,18 @@ SelfCondition SelfCondition::IsControllingSecret()
     });
 }
 
+SelfCondition SelfCondition::IsControllingQuest()
+{
+    return SelfCondition([=](Playable* Playable) -> bool {
+        const auto& secret = *Playable->player->GetSecretZone();
+        bool flag = false;
+        secret.ForEach([&flag](Spell* spell){
+            flag = flag || spell->IsSidequest();
+        });
+        return secret.quest != nullptr || flag;
+    });
+}
+
 SelfCondition SelfCondition::IsHoldingRace(Race race)
 {
     return SelfCondition([=](Playable* playable) -> bool {
